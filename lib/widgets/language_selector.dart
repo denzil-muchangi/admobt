@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:admobt/l10n/app_localizations.dart';
 
 class LanguageSelector extends StatelessWidget {
   const LanguageSelector({super.key});

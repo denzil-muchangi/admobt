@@ -9,8 +9,6 @@ import 'package:admobt/l10n/app_localizations.dart';
 import 'package:admobt/widgets/language_selector.dart';
 import 'package:admobt/widgets/welcome_section.dart';
 import 'package:admobt/widgets/section_header.dart';
-import 'package:admobt/widgets/banner_type_card.dart';
-import 'package:admobt/widgets/trigger_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -118,104 +116,6 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BannerAdWidget(
         adSize: AdSize.banner,
         placement: 'bottom_nav',
-      ),
-    );
-  }
-
-  Widget _buildWelcomeSection() {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.deepPurple, Colors.purple],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            AppLocalizations.of(context)?.welcomeTitle ??
-                'Welcome to AdMob Demo',
-            style: const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            AppLocalizations.of(context)?.welcomeSubtitle ??
-                'Explore all AdMob ad formats in creative ways',
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.white70,
-            ),
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              _buildStatCard('Banners', '5 Types', Colors.blue),
-              const SizedBox(width: 12),
-              _buildStatCard('Interstitial', 'Smart Triggers', Colors.orange),
-              const SizedBox(width: 12),
-              _buildStatCard('Rewarded', 'Gamified', Colors.green),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildStatCard(String title, String subtitle, Color color) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.2),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: color.withValues(alpha: 0.3)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 12,
-            ),
-          ),
-          Text(
-            subtitle,
-            style: const TextStyle(
-              color: Colors.white70,
-              fontSize: 10,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSectionHeader(String title, IconData icon) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
-      child: Row(
-        children: [
-          Icon(icon, color: Colors.deepPurple),
-          const SizedBox(width: 8),
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.deepPurple,
-            ),
-          ),
-        ],
       ),
     );
   }

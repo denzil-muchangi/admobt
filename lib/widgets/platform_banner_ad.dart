@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 // Export AdSize for compatibility
 export 'banner_ad_placeholder.dart' show AdSize;

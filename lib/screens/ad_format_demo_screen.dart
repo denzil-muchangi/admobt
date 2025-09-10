@@ -4,7 +4,6 @@ import 'package:admobt/ads/interstitial_ad_manager.dart';
 import 'package:admobt/ads/rewarded_ad_manager.dart';
 import 'package:admobt/ads/native_ad_widget.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:admobt/widgets/demo_card.dart';
 import 'package:admobt/widgets/game_stats.dart';
 import 'package:admobt/widgets/bottom_navigation.dart';
 
@@ -75,53 +74,6 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
             InterstitialAdManager.showInterstitialAd(context: context);
           }
         },
-      ),
-    );
-  }
-
-  Widget _buildBottomNav() {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
-            blurRadius: 10,
-            offset: const Offset(0, -5),
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: List.generate(5, (index) {
-          return GestureDetector(
-            onTap: () => _pageController.animateToPage(
-              index,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            ),
-            child: Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: _currentPage == index
-                    ? Colors.deepPurple
-                    : Colors.grey[300],
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Text(
-                  '${index + 1}',
-                  style: TextStyle(
-                    color: _currentPage == index ? Colors.white : Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          );
-        }),
       ),
     );
   }
