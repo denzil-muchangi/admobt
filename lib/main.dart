@@ -5,15 +5,36 @@ import 'package:admobt/ads/app_open_ad_manager.dart';
 import 'package:admobt/screens/home_screen.dart';
 import 'package:admobt/l10n/app_localizations.dart';
 
-void main() {
+// Guard to prevent multiple AdMob initializations
+bool _adMobInitialized = false;
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize AdMob
-  MobileAds.instance.initialize();
+  // Initialize AdMob with error handling and logging
+  if (!_adMobInitialized) {
+    try {
+      debugPrint('AdMob: Starting initialization...');
+      final InitializationStatus status = await MobileAds.instance.initialize();
+      debugPrint(
+          'AdMob: Initialization completed successfully. Adapter statuses: ${status.adapterStatuses}');
+      _adMobInitialized = true;
+    } catch (e, stackTrace) {
+      debugPrint('AdMob: Initialization failed with error: $e');
+      debugPrint('AdMob: Stack trace: $stackTrace');
+      // Continue with app startup even if AdMob fails
+    }
+  } else {
+    debugPrint('AdMob: Already initialized, skipping...');
+  }
 
-  // Load app open ad for cold start
-  AppOpenAdManager.loadAppOpenAd();
-  ColdStartAppOpenAd.handleColdStartAd();
+  // Load app open ad for cold start (after AdMob is initialized)
+  try {
+    AppOpenAdManager.loadAppOpenAd();
+    ColdStartAppOpenAd.handleColdStartAd();
+  } catch (e) {
+    debugPrint('AdMob: Failed to load app open ad: $e');
+  }
 
   runApp(const MyApp());
 }
