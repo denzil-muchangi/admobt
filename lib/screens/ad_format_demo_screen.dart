@@ -4,6 +4,9 @@ import 'package:admobt/ads/interstitial_ad_manager.dart';
 import 'package:admobt/ads/rewarded_ad_manager.dart';
 import 'package:admobt/ads/native_ad_widget.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:admobt/widgets/demo_card.dart';
+import 'package:admobt/widgets/game_stats.dart';
+import 'package:admobt/widgets/bottom_navigation.dart';
 
 class AdFormatDemoScreen extends StatefulWidget {
   const AdFormatDemoScreen({super.key});
@@ -60,7 +63,19 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
           _buildCombinedDemo(),
         ],
       ),
-      bottomNavigationBar: _buildBottomNav(),
+      bottomNavigationBar: BottomNavigation(
+        currentPage: _currentPage,
+        totalPages: 5,
+        onPageChanged: (page) {
+          setState(() {
+            _currentPage = page;
+          });
+          // Show interstitial every 3 page changes
+          if (page % 3 == 2) {
+            InterstitialAdManager.showInterstitialAd(context: context);
+          }
+        },
+      ),
     );
   }
 
@@ -199,7 +214,11 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 20),
-          _buildGameStats(),
+          GameStats(
+            lives: _lives,
+            score: _score,
+            isPremiumUnlocked: _isPremiumUnlocked,
+          ),
           const SizedBox(height: 20),
           _buildDemoCard(
             'Extra Lives',

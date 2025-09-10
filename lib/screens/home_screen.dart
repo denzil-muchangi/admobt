@@ -7,6 +7,10 @@ import 'package:admobt/ads/native_ad_widget.dart';
 import 'package:admobt/screens/ad_format_demo_screen.dart';
 import 'package:admobt/l10n/app_localizations.dart';
 import 'package:admobt/widgets/language_selector.dart';
+import 'package:admobt/widgets/welcome_section.dart';
+import 'package:admobt/widgets/section_header.dart';
+import 'package:admobt/widgets/banner_type_card.dart';
+import 'package:admobt/widgets/trigger_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -60,38 +64,39 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Welcome Section
-            _buildWelcomeSection(),
+            const WelcomeSection(),
 
             // Banner Ads Section
-            _buildSectionHeader(
-                AppLocalizations.of(context)?.bannerAds ?? 'Banner Ads',
-                Icons.view_array),
+            SectionHeader(
+                title: AppLocalizations.of(context)?.bannerAds ?? 'Banner Ads',
+                icon: Icons.view_array),
             _buildBannerAdsSection(),
 
             // Native Ads Section
-            _buildSectionHeader(
-                AppLocalizations.of(context)?.nativeAds ?? 'Native Ads',
-                Icons.style),
+            SectionHeader(
+                title: AppLocalizations.of(context)?.nativeAds ?? 'Native Ads',
+                icon: Icons.style),
             _buildNativeAdsSection(),
 
             // Rewarded Ads Section
-            _buildSectionHeader(
-                AppLocalizations.of(context)?.rewardedAds ?? 'Rewarded Ads',
-                Icons.card_giftcard),
+            SectionHeader(
+                title:
+                    AppLocalizations.of(context)?.rewardedAds ?? 'Rewarded Ads',
+                icon: Icons.card_giftcard),
             _buildRewardedAdsSection(),
 
             // Interstitial Ads Section
-            _buildSectionHeader(
-                AppLocalizations.of(context)?.interstitialAds ??
+            SectionHeader(
+                title: AppLocalizations.of(context)?.interstitialAds ??
                     'Interstitial Ads',
-                Icons.fullscreen),
+                icon: Icons.fullscreen),
             _buildInterstitialAdsSection(),
 
             // All Formats Demo
-            _buildSectionHeader(
-                AppLocalizations.of(context)?.allFormatsDemo ??
+            SectionHeader(
+                title: AppLocalizations.of(context)?.allFormatsDemo ??
                     'All Ad Formats Demo',
-                Icons.apps),
+                icon: Icons.apps),
             _buildAllFormatsDemoSection(),
 
             const SizedBox(height: 100), // Space for bottom banner
