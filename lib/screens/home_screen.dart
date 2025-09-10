@@ -5,6 +5,8 @@ import 'package:admobt/ads/interstitial_ad_manager.dart';
 import 'package:admobt/ads/rewarded_ad_manager.dart';
 import 'package:admobt/ads/native_ad_widget.dart';
 import 'package:admobt/screens/ad_format_demo_screen.dart';
+import 'package:admobt/l10n/app_localizations.dart';
+import 'package:admobt/widgets/language_selector.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -42,12 +44,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AdMob Demo Showcase'),
+        title: Text(
+            AppLocalizations.of(context)?.appTitle ?? 'AdMob Demo Showcase'),
         backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.white,
         actions: [
           CreativeRewardedAds.coinsDisplay(),
-          const SizedBox(width: 16),
+          const LanguageSelector(),
+          const SizedBox(width: 8),
         ],
       ),
       body: SingleChildScrollView(
@@ -59,23 +63,35 @@ class _HomeScreenState extends State<HomeScreen> {
             _buildWelcomeSection(),
 
             // Banner Ads Section
-            _buildSectionHeader('Banner Ads', Icons.view_array),
+            _buildSectionHeader(
+                AppLocalizations.of(context)?.bannerAds ?? 'Banner Ads',
+                Icons.view_array),
             _buildBannerAdsSection(),
 
             // Native Ads Section
-            _buildSectionHeader('Native Ads', Icons.style),
+            _buildSectionHeader(
+                AppLocalizations.of(context)?.nativeAds ?? 'Native Ads',
+                Icons.style),
             _buildNativeAdsSection(),
 
             // Rewarded Ads Section
-            _buildSectionHeader('Rewarded Ads', Icons.card_giftcard),
+            _buildSectionHeader(
+                AppLocalizations.of(context)?.rewardedAds ?? 'Rewarded Ads',
+                Icons.card_giftcard),
             _buildRewardedAdsSection(),
 
             // Interstitial Ads Section
-            _buildSectionHeader('Interstitial Ads', Icons.fullscreen),
+            _buildSectionHeader(
+                AppLocalizations.of(context)?.interstitialAds ??
+                    'Interstitial Ads',
+                Icons.fullscreen),
             _buildInterstitialAdsSection(),
 
             // All Formats Demo
-            _buildSectionHeader('All Ad Formats Demo', Icons.apps),
+            _buildSectionHeader(
+                AppLocalizations.of(context)?.allFormatsDemo ??
+                    'All Ad Formats Demo',
+                Icons.apps),
             _buildAllFormatsDemoSection(),
 
             const SizedBox(height: 100), // Space for bottom banner
@@ -115,18 +131,20 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Welcome to AdMob Demo',
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context)?.welcomeTitle ??
+                'Welcome to AdMob Demo',
+            style: const TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
           ),
           const SizedBox(height: 8),
-          const Text(
-            'Explore all AdMob ad formats in creative ways',
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context)?.welcomeSubtitle ??
+                'Explore all AdMob ad formats in creative ways',
+            style: const TextStyle(
               fontSize: 16,
               color: Colors.white70,
             ),

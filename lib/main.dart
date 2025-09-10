@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:admobt/ads/app_open_ad_manager.dart';
 import 'package:admobt/screens/home_screen.dart';
+import 'package:admobt/l10n/app_localizations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Initialize AdMob
   MobileAds.instance.initialize();
-  
+
   // Load app open ad for cold start
   AppOpenAdManager.loadAppOpenAd();
   ColdStartAppOpenAd.handleColdStartAd();
-  
+
   runApp(const MyApp());
 }
 
@@ -47,7 +49,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'AdMob Demo Showcase',
+      title: AppLocalizations.of(context)?.appTitle ?? 'AdMob Demo Showcase',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.deepPurple,
@@ -64,6 +66,18 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       ),
       home: const HomeScreen(),
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'), // English
+        Locale('es'), // Spanish
+        Locale('fr'), // French
+        Locale('de'), // German
+      ],
     );
   }
 }
