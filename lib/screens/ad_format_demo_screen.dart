@@ -97,17 +97,17 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
           _buildDemoCard(
             'Large Banner',
             '320x100 pixels - Better visibility',
-            BannerAdWidget(adSize: AdSize.largeBanner),
+            const BannerAdWidget(adSize: AdSize.largeBanner),
           ),
           _buildDemoCard(
             'Medium Rectangle',
             '300x250 pixels - High engagement',
-            BannerAdWidget(adSize: AdSize.mediumRectangle),
+            const BannerAdWidget(adSize: AdSize.mediumRectangle),
           ),
           _buildDemoCard(
             'Leaderboard',
             '728x90 pixels - Tablet optimized',
-            BannerAdWidget(adSize: AdSize.leaderboard),
+            const BannerAdWidget(adSize: AdSize.leaderboard),
           ),
           _buildDemoCard(
             'Adaptive Banner',
@@ -213,51 +213,6 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
     );
   }
 
-  Widget _buildGameStats() {
-    return Card(
-      elevation: 4,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _buildStat('Lives', _lives.toString(), Colors.red, Icons.favorite),
-            _buildStat('Score', _score.toString(), Colors.blue, Icons.star),
-            _buildStat(
-                'Premium',
-                _isPremiumUnlocked ? 'Yes' : 'No',
-                _isPremiumUnlocked ? Colors.green : Colors.grey,
-                _isPremiumUnlocked ? Icons.check_circle : Icons.lock),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildStat(String label, String value, Color color, IconData icon) {
-    return Column(
-      children: [
-        Icon(icon, color: color, size: 30),
-        const SizedBox(height: 4),
-        Text(
-          value,
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: color,
-          ),
-        ),
-        Text(
-          label,
-          style: const TextStyle(
-            fontSize: 12,
-            color: Colors.grey,
-          ),
-        ),
-      ],
-    );
-  }
-
   Widget _buildInterstitialAdDemo() {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
@@ -308,19 +263,19 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
             ),
           ),
           const SizedBox(height: 20),
-          Card(
+          const Card(
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: EdgeInsets.all(16),
               child: Column(
                 children: [
-                  const Icon(Icons.info, color: Colors.blue, size: 48),
-                  const SizedBox(height: 8),
-                  const Text(
+                  Icon(Icons.info, color: Colors.blue, size: 48),
+                  SizedBox(height: 8),
+                  Text(
                     'Smart Triggers',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 8),
-                  const Text(
+                  SizedBox(height: 8),
+                  Text(
                     'Interstitial ads are intelligently triggered based on user behavior, ensuring optimal user experience while maximizing revenue.',
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.grey),
@@ -453,9 +408,9 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
           const SizedBox(height: 16),
 
           // Banner at bottom
-          Card(
+          const Card(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: BannerAdWidget(adSize: AdSize.largeBanner),
             ),
           ),

@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.deepPurple,
         child: const Icon(Icons.play_arrow),
       ),
-      bottomNavigationBar: BannerAdWidget(
+      bottomNavigationBar: const BannerAdWidget(
         adSize: AdSize.banner,
         placement: 'bottom_nav',
       ),
@@ -135,19 +135,19 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(width: 12),
               _buildBannerTypeCard(
                   'Large',
-                  BannerAdWidget(
+                  const BannerAdWidget(
                     adSize: AdSize.largeBanner,
                   )),
               const SizedBox(width: 12),
               _buildBannerTypeCard(
                   'Medium',
-                  BannerAdWidget(
+                  const BannerAdWidget(
                     adSize: AdSize.mediumRectangle,
                   )),
               const SizedBox(width: 12),
               _buildBannerTypeCard(
                   'Leaderboard',
-                  BannerAdWidget(
+                  const BannerAdWidget(
                     adSize: AdSize.leaderboard,
                   )),
             ],

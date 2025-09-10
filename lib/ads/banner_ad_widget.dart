@@ -169,7 +169,7 @@ class CreativeBannerAds {
               ),
             ),
             if (initiallyExpanded)
-              BannerAdWidget(
+              const BannerAdWidget(
                 adSize: AdSize.mediumRectangle,
                 placement: 'collapsible',
               ),
@@ -209,15 +209,15 @@ class CreativeBannerAds {
 
   // Inline banner within content
   static Widget inlineContentBanner() {
-    return Card(
+    return const Card(
       elevation: 4,
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Sponsored Content',
               style: TextStyle(
                 fontSize: 12,
@@ -225,8 +225,8 @@ class CreativeBannerAds {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 8),
-            const BannerAdWidget(
+            SizedBox(height: 8),
+            BannerAdWidget(
               adSize: AdSize.mediumRectangle,
               placement: 'inline_content',
             ),
@@ -248,7 +248,7 @@ class CreativeBannerAds {
       child: Material(
         elevation: 8,
         borderRadius: BorderRadius.circular(8),
-        child: BannerAdWidget(
+        child: const BannerAdWidget(
           placement: 'floating',
         ),
       ),
