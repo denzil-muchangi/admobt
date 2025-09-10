@@ -1,0 +1,355 @@
+{
+  "@@locale": "en",
+  "appTitle": "AdMob Demo Showcase",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "welcomeTitle": "Welcome to AdMob Demo",
+  "@welcomeTitle": {
+    "description": "Welcome message title"
+  },
+  "welcomeSubtitle": "Explore all AdMob ad formats in creative ways",
+  "@welcomeSubtitle": {
+    "description": "Welcome message subtitle"
+  },
+  "bannerAds": "Banner Ads",
+  "@bannerAds": {
+    "description": "Banner ads section title"
+  },
+  "nativeAds": "Native Ads",
+  "@nativeAds": {
+    "description": "Native ads section title"
+  },
+  "rewardedAds": "Rewarded Ads",
+  "@rewardedAds": {
+    "description": "Rewarded ads section title"
+  },
+  "interstitialAds": "Interstitial Ads",
+  "@interstitialAds": {
+    "description": "Interstitial ads section title"
+  },
+  "allFormatsDemo": "All Ad Formats Demo",
+  "@allFormatsDemo": {
+    "description": "All formats demo section title"
+  },
+  "startDemo": "Start Demo",
+  "@startDemo": {
+    "description": "Button text to start the demo"
+  },
+  "bannerShowcase": "Banner Ad Showcase",
+  "@bannerShowcase": {
+    "description": "Banner ad showcase page title"
+  },
+  "standardBanner": "Standard Banner",
+  "@standardBanner": {
+    "description": "Standard banner description"
+  },
+  "standardBannerDesc": "320x50 pixels - Most common format",
+  "@standardBannerDesc": {
+    "description": "Standard banner description text"
+  },
+  "largeBanner": "Large Banner",
+  "@largeBanner": {
+    "description": "Large banner title"
+  },
+  "largeBannerDesc": "320x100 pixels - Better visibility",
+  "@largeBannerDesc": {
+    "description": "Large banner description text"
+  },
+  "mediumRectangle": "Medium Rectangle",
+  "@mediumRectangle": {
+    "description": "Medium rectangle title"
+  },
+  "mediumRectangleDesc": "300x250 pixels - High engagement",
+  "@mediumRectangleDesc": {
+    "description": "Medium rectangle description text"
+  },
+  "leaderboard": "Leaderboard",
+  "@leaderboard": {
+    "description": "Leaderboard title"
+  },
+  "leaderboardDesc": "728x90 pixels - Tablet optimized",
+  "@leaderboardDesc": {
+    "description": "Leaderboard description text"
+  },
+  "adaptiveBanner": "Adaptive Banner",
+  "@adaptiveBanner": {
+    "description": "Adaptive banner title"
+  },
+  "adaptiveBannerDesc": "Responsive - Adapts to screen width",
+  "@adaptiveBannerDesc": {
+    "description": "Adaptive banner description text"
+  },
+  "nativeIntegration": "Native Ad Integration",
+  "@nativeIntegration": {
+    "description": "Native ad integration page title"
+  },
+  "feedNativeAd": "Feed Native Ad",
+  "@feedNativeAd": {
+    "description": "Feed native ad title"
+  },
+  "feedNativeAdDesc": "Seamlessly integrated in content feed",
+  "@feedNativeAdDesc": {
+    "description": "Feed native ad description"
+  },
+  "articleNativeAd": "Article Native Ad",
+  "@articleNativeAd": {
+    "description": "Article native ad title"
+  },
+  "articleNativeAdDesc": "Looks like part of the article",
+  "@articleNativeAdDesc": {
+    "description": "Article native ad description"
+  },
+  "cardNativeAd": "Card Native Ad",
+  "@cardNativeAd": {
+    "description": "Card native ad title"
+  },
+  "cardNativeAdDesc": "Styled as a featured card",
+  "@cardNativeAdDesc": {
+    "description": "Card native ad description"
+  },
+  "customNativeAd": "Custom Native Ad",
+  "@customNativeAd": {
+    "description": "Custom native ad title"
+  },
+  "customNativeAdDesc": "Fully customized styling",
+  "@customNativeAdDesc": {
+    "description": "Custom native ad description"
+  },
+  "rewardedExperience": "Rewarded Ad Experience",
+  "@rewardedExperience": {
+    "description": "Rewarded ad experience page title"
+  },
+  "extraLives": "Extra Lives",
+  "@extraLives": {
+    "description": "Extra lives reward title"
+  },
+  "extraLivesDesc": "Watch ad to get 3 extra lives",
+  "@extraLivesDesc": {
+    "description": "Extra lives reward description"
+  },
+  "premiumUnlock": "Premium Unlock",
+  "@premiumUnlock": {
+    "description": "Premium unlock title"
+  },
+  "premiumUnlockDesc": "Watch ad to unlock premium features",
+  "@premiumUnlockDesc": {
+    "description": "Premium unlock description"
+  },
+  "scoreMultiplier": "Score Multiplier",
+  "@scoreMultiplier": {
+    "description": "Score multiplier title"
+  },
+  "scoreMultiplierDesc": "Watch ad to get 2X score multiplier",
+  "@scoreMultiplierDesc": {
+    "description": "Score multiplier description"
+  },
+  "interstitialTriggers": "Interstitial Ad Triggers",
+  "@interstitialTriggers": {
+    "description": "Interstitial ad triggers page title"
+  },
+  "buttonClickTrigger": "Button Click Trigger",
+  "@buttonClickTrigger": {
+    "description": "Button click trigger title"
+  },
+  "buttonClickTriggerDesc": "33% chance to show ad when button is clicked",
+  "@buttonClickTriggerDesc": {
+    "description": "Button click trigger description"
+  },
+  "timeBasedTrigger": "Time-Based Trigger",
+  "@timeBasedTrigger": {
+    "description": "Time-based trigger title"
+  },
+  "timeBasedTriggerDesc": "Shows ad after 5 seconds",
+  "@timeBasedTriggerDesc": {
+    "description": "Time-based trigger description"
+  },
+  "manualTrigger": "Manual Trigger",
+  "@manualTrigger": {
+    "description": "Manual trigger title"
+  },
+  "manualTriggerDesc": "Force show interstitial ad",
+  "@manualTriggerDesc": {
+    "description": "Manual trigger description"
+  },
+  "smartTriggers": "Smart Triggers",
+  "@smartTriggers": {
+    "description": "Smart triggers title"
+  },
+  "smartTriggersDesc": "Interstitial ads are intelligently triggered based on user behavior, ensuring optimal user experience while maximizing revenue.",
+  "@smartTriggersDesc": {
+    "description": "Smart triggers description"
+  },
+  "completeExperience": "Complete Ad Experience",
+  "@completeExperience": {
+    "description": "Complete ad experience page title"
+  },
+  "experienceDesc": "This section demonstrates how all ad formats work together in a real app scenario:",
+  "@experienceDesc": {
+    "description": "Experience description text"
+  },
+  "interactiveContent": "Interactive Content",
+  "@interactiveContent": {
+    "description": "Interactive content title"
+  },
+  "unlockContent": "Unlock Content with Ad",
+  "@unlockContent": {
+    "description": "Unlock content button text"
+  },
+  "triggerAd": "Trigger Ad",
+  "@triggerAd": {
+    "description": "Trigger ad button text"
+  },
+  "adUnavailable": "Ad unavailable",
+  "@adUnavailable": {
+    "description": "Message shown when ad is not available"
+  },
+  "adNotReady": "Ad not ready yet. Please try again.",
+  "@adNotReady": {
+    "description": "Message when ad is not ready"
+  },
+  "rewardedAdNotReady": "Rewarded ad not ready yet. Please try again.",
+  "@rewardedAdNotReady": {
+    "description": "Message when rewarded ad is not ready"
+  },
+  "congratulations": "Congratulations! You earned {amount} {type}!",
+  "@congratulations": {
+    "description": "Reward earned message",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "premiumContentUnlocked": "Premium content unlocked!",
+  "@premiumContentUnlocked": {
+    "description": "Premium content unlocked message"
+  },
+  "multiplierActivated": "2X multiplier activated!",
+  "@multiplierActivated": {
+    "description": "Multiplier activated message"
+  },
+  "extraLivesAdded": "3 extra lives added!",
+  "@extraLivesAdded": {
+    "description": "Extra lives added message"
+  },
+  "actionCompleted": "Action completed!",
+  "@actionCompleted": {
+    "description": "Action completed message"
+  },
+  "keepScrolling": "Keep scrolling to trigger interstitial!",
+  "@keepScrolling": {
+    "description": "Keep scrolling message"
+  },
+  "adDismissed": "Ad dismissed",
+  "@adDismissed": {
+    "description": "Ad dismissed message"
+  },
+  "contentUnlocked": "Content unlocked!",
+  "@contentUnlocked": {
+    "description": "Content unlocked message"
+  },
+  "premiumFeaturesActivated": "Premium features activated!",
+  "@premiumFeaturesActivated": {
+    "description": "Premium features activated message"
+  },
+  "adWillShow": "Ad will show in 5 seconds...",
+  "@adWillShow": {
+    "description": "Ad will show message"
+  },
+  "exitApp": "Exit App?",
+  "@exitApp": {
+    "description": "Exit app dialog title"
+  },
+  "watchAdBeforeExit": "Watch a quick ad before you go?",
+  "@watchAdBeforeExit": {
+    "description": "Exit app dialog message"
+  },
+  "stay": "Stay",
+  "@stay": {
+    "description": "Stay button text"
+  },
+  "exitWithAd": "Exit with Ad",
+  "@exitWithAd": {
+    "description": "Exit with ad button text"
+  },
+  "advertisement": "Advertisement",
+  "@advertisement": {
+    "description": "Advertisement label"
+  },
+  "sponsored": "Sponsored",
+  "@sponsored": {
+    "description": "Sponsored label"
+  },
+  "featured": "Featured",
+  "@featured": {
+    "description": "Featured label"
+  },
+  "outOfLives": "Out of Lives!",
+  "@outOfLives": {
+    "description": "Out of lives title"
+  },
+  "watchAdForLives": "Watch an ad to get 3 extra lives!",
+  "@watchAdForLives": {
+    "description": "Watch ad for lives message"
+  },
+  "getExtraLives": "Get Extra Lives",
+  "@getExtraLives": {
+    "description": "Get extra lives button text"
+  },
+  "premiumContent": "Premium Content",
+  "@premiumContent": {
+    "description": "Premium content title"
+  },
+  "watchAdForPremium": "Watch an ad to unlock exclusive content!",
+  "@watchAdForPremium": {
+    "description": "Watch ad for premium message"
+  },
+  "watchAdUnlock": "Watch Ad & Unlock",
+  "@watchAdUnlock": {
+    "description": "Watch ad and unlock button text"
+  },
+  "bonusMultiplier": "2X Daily Bonus!",
+  "@bonusMultiplier": {
+    "description": "Bonus multiplier title"
+  },
+  "watchAdForMultiplier": "Watch an ad to double your daily rewards!",
+  "@watchAdForMultiplier": {
+    "description": "Watch ad for multiplier message"
+  },
+  "activateMultiplier": "Activate 2X Bonus",
+  "@activateMultiplier": {
+    "description": "Activate multiplier button text"
+  },
+  "lives": "Lives",
+  "@lives": {
+    "description": "Lives label"
+  },
+  "score": "Score",
+  "@score": {
+    "description": "Score label"
+  },
+  "premium": "Premium",
+  "@premium": {
+    "description": "Premium label"
+  },
+  "yes": "Yes",
+  "@yes": {
+    "description": "Yes text"
+  },
+  "no": "No",
+  "@no": {
+    "description": "No text"
+  },
+  "scrollThreshold": "Scroll Threshold",
+  "@scrollThreshold": {
+    "description": "Scroll threshold title"
+  },
+  "scrollThresholdDesc": "Shows after scrolling 1000px",
+  "@scrollThresholdDesc": {
+    "description": "Scroll threshold description"
+  }
+}
