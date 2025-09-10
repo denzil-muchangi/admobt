@@ -1,0 +1,73 @@
+# Build Configuration for Multi-Platform Flutter App
+# This file contains platform-specific build settings
+
+platforms:
+  android:
+    build_command: flutter build apk --release
+    output_path: build/app/outputs/flutter-apk/app-release.apk
+    artifact_name: android-apk
+
+  ios:
+    build_command: flutter build ios --release --no-codesign
+    output_path: build/ios/iphoneos/Runner.app
+    artifact_name: ios-build
+
+  web:
+    build_command: flutter build web --release
+    output_path: build/web/
+    artifact_name: web-build
+
+# Platform-specific configurations
+platform_configs:
+  android:
+    min_sdk_version: 21
+    target_sdk_version: 34
+    compile_sdk_version: 34
+    manifest_permissions:
+      - INTERNET
+      - ACCESS_NETWORK_STATE
+      - WAKE_LOCK
+
+  ios:
+    deployment_target: "12.0"
+    bundle_id: com.example.admobt
+    team_id: "" # Set your Apple Developer Team ID
+
+  web:
+    base_href: /
+    renderer: canvaskit
+    pwa_support: true
+
+# Build flavors (for different environments)
+flavors:
+  development:
+    app_name: "AdMob Demo (Dev)"
+    bundle_id_suffix: .dev
+    icon: assets/icons/dev_icon.png
+
+  staging:
+    app_name: "AdMob Demo (Staging)"
+    bundle_id_suffix: .staging
+    icon: assets/icons/staging_icon.png
+
+  production:
+    app_name: "AdMob Demo"
+    bundle_id_suffix: ""
+    icon: assets/icons/prod_icon.png
+
+# Environment variables for different builds
+environment:
+  development:
+    API_BASE_URL: "https://dev-api.admobt.com"
+    ENABLE_LOGS: true
+    ENABLE_ANALYTICS: false
+
+  staging:
+    API_BASE_URL: "https://staging-api.admobt.com"
+    ENABLE_LOGS: true
+    ENABLE_ANALYTICS: true
+
+  production:
+    API_BASE_URL: "https://api.admobt.com"
+    ENABLE_LOGS: false
+    ENABLE_ANALYTICS: true
