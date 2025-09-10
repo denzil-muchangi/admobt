@@ -71,7 +71,7 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, -5),
           ),
@@ -90,7 +90,9 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: _currentPage == index ? Colors.deepPurple : Colors.grey[300],
+                color: _currentPage == index
+                    ? Colors.deepPurple
+                    : Colors.grey[300],
                 shape: BoxShape.circle,
               ),
               child: Center(
@@ -120,35 +122,30 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 20),
-          
           _buildDemoCard(
             'Standard Banner',
             '320x50 pixels - Most common format',
             const BannerAdWidget(),
           ),
-          
           _buildDemoCard(
             'Large Banner',
             '320x100 pixels - Better visibility',
-            const BannerAdWidget(adSize: AdSize.largeBanner),
+            BannerAdWidget(adSize: AdSize.largeBanner),
           ),
-          
           _buildDemoCard(
             'Medium Rectangle',
             '300x250 pixels - High engagement',
-            const BannerAdWidget(adSize: AdSize.mediumRectangle),
+            BannerAdWidget(adSize: AdSize.mediumRectangle),
           ),
-          
           _buildDemoCard(
             'Leaderboard',
             '728x90 pixels - Tablet optimized',
-            const BannerAdWidget(adSize: AdSize.leaderboard),
+            BannerAdWidget(adSize: AdSize.leaderboard),
           ),
-          
           _buildDemoCard(
-            'Smart Banner',
+            'Adaptive Banner',
             'Responsive - Adapts to screen width',
-            const BannerAdWidget(adSize: AdSize.smartBanner),
+            const BannerAdWidget(),
           ),
         ],
       ),
@@ -166,25 +163,21 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 20),
-          
           _buildDemoCard(
             'Feed Native Ad',
             'Seamlessly integrated in content feed',
             CreativeNativeAds.feedNativeAd(),
           ),
-          
           _buildDemoCard(
             'Article Native Ad',
             'Looks like part of the article',
             CreativeNativeAds.articleNativeAd(),
           ),
-          
           _buildDemoCard(
             'Card Native Ad',
             'Styled as a featured card',
             CreativeNativeAds.cardNativeAd(),
           ),
-          
           _buildDemoCard(
             'Custom Native Ad',
             'Fully customized styling',
@@ -206,10 +199,8 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 20),
-          
           _buildGameStats(),
           const SizedBox(height: 20),
-          
           _buildDemoCard(
             'Extra Lives',
             'Watch ad to get 3 extra lives',
@@ -222,7 +213,6 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
               },
             ),
           ),
-          
           _buildDemoCard(
             'Premium Unlock',
             'Watch ad to unlock premium features',
@@ -235,7 +225,6 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
               },
             ),
           ),
-          
           _buildDemoCard(
             'Score Multiplier',
             'Watch ad to get 2X score multiplier',
@@ -263,8 +252,10 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
           children: [
             _buildStat('Lives', _lives.toString(), Colors.red, Icons.favorite),
             _buildStat('Score', _score.toString(), Colors.blue, Icons.star),
-            _buildStat('Premium', _isPremiumUnlocked ? 'Yes' : 'No', 
-                _isPremiumUnlocked ? Colors.green : Colors.grey, 
+            _buildStat(
+                'Premium',
+                _isPremiumUnlocked ? 'Yes' : 'No',
+                _isPremiumUnlocked ? Colors.green : Colors.grey,
                 _isPremiumUnlocked ? Icons.check_circle : Icons.lock),
           ],
         ),
@@ -307,7 +298,6 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 20),
-          
           _buildTriggerDemo(
             'Button Click Trigger',
             '33% chance to show ad when button is clicked',
@@ -319,7 +309,6 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
               ),
             ),
           ),
-          
           _buildTriggerDemo(
             'Time-Based Trigger',
             'Shows ad after 5 seconds',
@@ -334,7 +323,6 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
               );
             },
           ),
-          
           _buildTriggerDemo(
             'Manual Trigger',
             'Force show interstitial ad',
@@ -348,7 +336,6 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
               },
             ),
           ),
-          
           const SizedBox(height: 20),
           Card(
             child: Padding(
@@ -376,7 +363,8 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
     );
   }
 
-  Widget _buildTriggerDemo(String title, String description, IconData icon, VoidCallback onPressed) {
+  Widget _buildTriggerDemo(
+      String title, String description, IconData icon, VoidCallback onPressed) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -432,13 +420,13 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 20),
-          
+
           const Text(
             'This section demonstrates how all ad formats work together in a real app scenario:',
             style: TextStyle(color: Colors.grey),
           ),
           const SizedBox(height: 20),
-          
+
           // Banner at top
           const Card(
             child: Padding(
@@ -446,14 +434,14 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
               child: BannerAdWidget(),
             ),
           ),
-          
+
           const SizedBox(height: 16),
-          
+
           // Native ad in content
           CreativeNativeAds.feedNativeAd(),
-          
+
           const SizedBox(height: 16),
-          
+
           // Interactive content
           Card(
             child: Padding(
@@ -481,7 +469,8 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
                     context: context,
                     onContentUnlocked: () {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Premium features activated!')),
+                        const SnackBar(
+                            content: Text('Premium features activated!')),
                       );
                     },
                   ),
@@ -489,13 +478,13 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
               ),
             ),
           ),
-          
+
           const SizedBox(height: 16),
-          
+
           // Banner at bottom
-          const Card(
+          Card(
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: BannerAdWidget(adSize: AdSize.largeBanner),
             ),
           ),

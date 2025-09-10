@@ -19,6 +19,10 @@ class NativeAdWidget extends StatefulWidget {
 class _NativeAdWidgetState extends State<NativeAdWidget> {
   NativeAd? _nativeAd;
   bool _isAdLoaded = false;
+  bool _isLoading = false;
+  String? _errorMessage;
+  int _retryCount = 0;
+  static const int maxRetries = 2;
 
   @override
   void initState() {
@@ -27,6 +31,13 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
   }
 
   void _loadAd() {
+    if (_isLoading) return;
+
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
+    });
+
     _nativeAd = NativeAd(
       adUnitId: AdHelper.nativeAdUnitId,
       request: const AdRequest(),
@@ -62,10 +73,27 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
         onAdLoaded: (Ad ad) {
           setState(() {
             _isAdLoaded = true;
+            _isLoading = false;
           });
+          debugPrint('Native ad loaded: ${widget.placement}');
         },
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
+          debugPrint('Native ad failed to load: ${widget.placement} - $error');
           ad.dispose();
+
+          if (_retryCount < maxRetries) {
+            _retryCount++;
+            debugPrint('Retrying native ad load (attempt ${_retryCount + 1})');
+            Future.delayed(const Duration(seconds: 1), () {
+              if (mounted) _loadAd();
+            });
+          } else {
+            setState(() {
+              _isLoading = false;
+              _errorMessage =
+                  'Failed to load ad after ${maxRetries + 1} attempts';
+            });
+          }
         },
       ),
     )..load();
@@ -86,7 +114,31 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
         child: AdWidget(ad: _nativeAd!),
       );
     }
-    return const SizedBox.shrink();
+
+    if (_isLoading) {
+      return Container(
+        height: widget.height,
+        alignment: Alignment.center,
+        child: const CircularProgressIndicator(),
+      );
+    }
+
+    if (_errorMessage != null) {
+      return Container(
+        height: widget.height,
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(16),
+        child: Text(
+          'Ad unavailable',
+          style: TextStyle(
+            color: Colors.grey[600],
+            fontSize: 14,
+          ),
+        ),
+      );
+    }
+
+    return SizedBox(height: widget.height);
   }
 }
 
@@ -94,13 +146,13 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
 class CreativeNativeAds {
   // Native ad in feed
   static Widget feedNativeAd() {
-    return Card(
+    return const Card(
       elevation: 2,
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
+          Padding(
             padding: EdgeInsets.all(12.0),
             child: Row(
               children: [
@@ -117,7 +169,7 @@ class CreativeNativeAds {
               ],
             ),
           ),
-          const NativeAdWidget(
+          NativeAdWidget(
             placement: 'feed',
             height: 250,
           ),
@@ -141,7 +193,8 @@ class CreativeNativeAds {
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
               color: Colors.grey[100],
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(8)),
             ),
             child: const Text(
               'Advertisement',
@@ -174,7 +227,7 @@ class CreativeNativeAds {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.blue.withOpacity(0.1),
+            color: Colors.blue.withValues(alpha: 0.1),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -217,7 +270,7 @@ class CreativeNativeAds {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),

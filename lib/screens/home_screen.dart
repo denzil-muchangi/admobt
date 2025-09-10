@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:admobt/ads/banner_ad_widget.dart';
 import 'package:admobt/ads/interstitial_ad_manager.dart';
 import 'package:admobt/ads/rewarded_ad_manager.dart';
@@ -14,7 +15,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final ScrollController _scrollController = ScrollController();
-  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // Load all ad types
     InterstitialAdManager.loadInterstitialAd();
     RewardedAdManager.loadRewardedAd();
-    
+
     // Set up scroll trigger for interstitial
     _scrollController.addListener(() {
       if (_scrollController.offset > 1000 &&
@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.white,
         actions: [
-          RewardedAdManager.coinsDisplay(),
+          CreativeRewardedAds.coinsDisplay(),
           const SizedBox(width: 16),
         ],
       ),
@@ -57,27 +57,27 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             // Welcome Section
             _buildWelcomeSection(),
-            
+
             // Banner Ads Section
             _buildSectionHeader('Banner Ads', Icons.view_array),
             _buildBannerAdsSection(),
-            
+
             // Native Ads Section
             _buildSectionHeader('Native Ads', Icons.style),
             _buildNativeAdsSection(),
-            
+
             // Rewarded Ads Section
             _buildSectionHeader('Rewarded Ads', Icons.card_giftcard),
             _buildRewardedAdsSection(),
-            
+
             // Interstitial Ads Section
             _buildSectionHeader('Interstitial Ads', Icons.fullscreen),
             _buildInterstitialAdsSection(),
-            
+
             // All Formats Demo
             _buildSectionHeader('All Ad Formats Demo', Icons.apps),
             _buildAllFormatsDemoSection(),
-            
+
             const SizedBox(height: 100), // Space for bottom banner
           ],
         ),
@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.deepPurple,
         child: const Icon(Icons.play_arrow),
       ),
-      bottomNavigationBar: const BannerAdWidget(
+      bottomNavigationBar: BannerAdWidget(
         adSize: AdSize.banner,
         placement: 'bottom_nav',
       ),
@@ -150,9 +150,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.2),
+        color: color.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -210,17 +210,23 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               _buildBannerTypeCard('Standard', const BannerAdWidget()),
               const SizedBox(width: 12),
-              _buildBannerTypeCard('Large', const BannerAdWidget(
-                adSize: AdSize.largeBanner,
-              )),
+              _buildBannerTypeCard(
+                  'Large',
+                  BannerAdWidget(
+                    adSize: AdSize.largeBanner,
+                  )),
               const SizedBox(width: 12),
-              _buildBannerTypeCard('Medium', const BannerAdWidget(
-                adSize: AdSize.mediumRectangle,
-              )),
+              _buildBannerTypeCard(
+                  'Medium',
+                  BannerAdWidget(
+                    adSize: AdSize.mediumRectangle,
+                  )),
               const SizedBox(width: 12),
-              _buildBannerTypeCard('Leaderboard', const BannerAdWidget(
-                adSize: AdSize.leaderboard,
-              )),
+              _buildBannerTypeCard(
+                  'Leaderboard',
+                  BannerAdWidget(
+                    adSize: AdSize.leaderboard,
+                  )),
             ],
           ),
         ),
@@ -241,7 +247,8 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
               color: Colors.grey[100],
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(8)),
             ),
             child: Text(
               title,
