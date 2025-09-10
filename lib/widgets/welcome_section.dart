@@ -10,7 +10,7 @@ class WelcomeSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [Colors.deepPurple, Colors.purple],
           begin: Alignment.topLeft,
@@ -39,20 +39,20 @@ class WelcomeSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          Row(
+          const Row(
             children: [
               StatCard(
                 title: 'Banners',
                 subtitle: '5 Types',
                 color: Colors.blue,
               ),
-              const SizedBox(width: 12),
+              SizedBox(width: 12),
               StatCard(
                 title: 'Interstitial',
                 subtitle: 'Smart Triggers',
                 color: Colors.orange,
               ),
-              const SizedBox(width: 12),
+              SizedBox(width: 12),
               StatCard(
                 title: 'Rewarded',
                 subtitle: 'Gamified',
