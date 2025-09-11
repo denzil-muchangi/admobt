@@ -6,6 +6,7 @@ import 'package:admobt/ads/native_ad_widget.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:admobt/widgets/game_stats.dart';
 import 'package:admobt/widgets/bottom_navigation.dart';
+import 'package:admobt/utils/responsive_utils.dart';
 
 class AdFormatDemoScreen extends StatefulWidget {
   const AdFormatDemoScreen({super.key});
@@ -37,9 +38,14 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final appBarTitleSize = context.responsiveFontSize(20.0);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ad Format Interactive Demo'),
+        title: Text(
+          'Ad Format Interactive Demo',
+          style: TextStyle(fontSize: appBarTitleSize),
+        ),
         backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.white,
       ),
@@ -79,16 +85,21 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
   }
 
   Widget _buildBannerAdDemo() {
+    final titleFontSize = context.responsiveFontSize(24.0);
+
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
+      padding: context.responsivePadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Banner Ad Showcase',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: titleFontSize,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: context.responsiveSpacing * 2),
           _buildDemoCard(
             'Standard Banner',
             '320x50 pixels - Most common format',
@@ -420,31 +431,38 @@ class _AdFormatDemoScreenState extends State<AdFormatDemoScreen> {
   }
 
   Widget _buildDemoCard(String title, String description, Widget adWidget) {
+    final titleFontSize = context.responsiveFontSize(18.0);
+    final descriptionFontSize = context.responsiveFontSize(14.0);
+    final borderRadius = context.responsiveBorderRadius;
+
     return Card(
-      elevation: 4,
-      margin: const EdgeInsets.only(bottom: 16),
+      elevation: context.responsiveElevation,
+      margin: EdgeInsets.only(bottom: context.responsiveSpacing),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: context.responsivePadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 18,
+              style: TextStyle(
+                fontSize: titleFontSize,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: context.responsiveSpacing * 0.25),
             Text(
               description,
-              style: const TextStyle(color: Colors.grey),
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: descriptionFontSize,
+              ),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: context.responsiveSpacing),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey[300]!),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(borderRadius),
               ),
               child: adWidget,
             ),

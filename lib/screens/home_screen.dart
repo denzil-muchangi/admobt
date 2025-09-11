@@ -46,7 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final appBarTitleSize = context.responsiveFontSize(20.0);
-    final fabSize = context.responsiveValue(56.0, 64.0, 72.0);
 
     return Scaffold(
       appBar: AppBar(
@@ -214,7 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildRewardedAdsSection() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: context.responsivePadding,
       child: Column(
         children: [
           CreativeRewardedAds.premiumContentUnlock(
@@ -225,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: context.responsiveSpacing),
           CreativeRewardedAds.dailyRewardMultiplier(
             context: context,
             onMultiplierApplied: () {
@@ -234,7 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: context.responsiveSpacing),
           CreativeRewardedAds.extraLivesGame(
             context: context,
             onLivesAdded: () {
@@ -250,7 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildInterstitialAdsSection() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: context.responsivePadding,
       child: Column(
         children: [
           _buildTriggerCard(
@@ -264,7 +263,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: context.responsiveSpacing),
           _buildTriggerCard(
             'Scroll Threshold',
             'Shows after scrolling 1000px',
@@ -275,7 +274,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: context.responsiveSpacing),
           _buildTriggerCard(
             'Manual Trigger',
             'Force show interstitial ad',
@@ -296,48 +295,73 @@ class _HomeScreenState extends State<HomeScreen> {
     IconData icon,
     VoidCallback onPressed,
   ) {
+    final iconSize = context.responsiveIconSize(24.0);
+    final titleFontSize = context.responsiveFontSize(16.0);
+    final subtitleFontSize = context.responsiveFontSize(14.0);
+    final buttonFontSize = context.responsiveFontSize(14.0);
+
     return Card(
+      elevation: context.responsiveElevation,
+      margin: context.responsiveMargin,
       child: ListTile(
-        leading: Icon(icon, color: Colors.deepPurple),
-        title: Text(title),
-        subtitle: Text(description),
+        leading: Icon(icon, color: Colors.deepPurple, size: iconSize),
+        title: Text(
+          title,
+          style: TextStyle(fontSize: titleFontSize),
+        ),
+        subtitle: Text(
+          description,
+          style: TextStyle(fontSize: subtitleFontSize),
+        ),
         trailing: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.deepPurple,
             foregroundColor: Colors.white,
+            padding: context.responsiveButtonPadding,
           ),
-          child: const Text('Trigger'),
+          child: Text(
+            'Trigger',
+            style: TextStyle(fontSize: buttonFontSize),
+          ),
         ),
       ),
     );
   }
 
   Widget _buildAllFormatsDemoSection() {
+    final iconSize = context.responsiveIconSize(48.0);
+    final titleFontSize = context.responsiveFontSize(20.0);
+    final subtitleFontSize = context.responsiveFontSize(16.0);
+    final buttonFontSize = context.responsiveFontSize(16.0);
+
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: context.responsivePadding,
       child: Card(
-        elevation: 4,
+        elevation: context.responsiveElevation,
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: context.responsivePadding * 2,
           child: Column(
             children: [
-              const Icon(Icons.apps, size: 48, color: Colors.deepPurple),
-              const SizedBox(height: 16),
-              const Text(
+              Icon(Icons.apps, size: iconSize, color: Colors.deepPurple),
+              SizedBox(height: context.responsiveSpacing),
+              Text(
                 'Interactive Ad Demo',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: titleFontSize,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
-              const Text(
+              SizedBox(height: context.responsiveSpacing * 0.5),
+              Text(
                 'Experience all ad formats in a controlled environment',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: subtitleFontSize,
+                ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: context.responsiveSpacing * 2),
               ElevatedButton.icon(
                 onPressed: () {
                   Navigator.push(
@@ -347,15 +371,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 },
-                icon: const Icon(Icons.play_arrow),
-                label: const Text('Start Demo'),
+                icon: Icon(Icons.play_arrow,
+                    size: context.responsiveIconSize(24.0)),
+                label: Text(
+                  'Start Demo',
+                  style: TextStyle(fontSize: buttonFontSize),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepPurple,
                   foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 32,
-                    vertical: 16,
-                  ),
+                  padding: context.responsiveButtonPadding,
                 ),
               ),
             ],

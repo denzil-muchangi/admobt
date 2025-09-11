@@ -117,7 +117,7 @@ class ResponsiveUtils {
 
   /// Get responsive text scale factor
   static double getTextScaleFactor(BuildContext context) {
-    return MediaQuery.of(context).textScaleFactor.clamp(0.8, 1.2);
+    return MediaQuery.of(context).textScaler.scale(1.0).clamp(0.8, 1.2);
   }
 }
 
