@@ -1,30 +1,34 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+// Comprehensive test suite for Flutter AdMob Demo App
+// This file serves as the main test entry point
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:admobt/main.dart';
+// Import existing test files
+import 'unit/responsive_utils_test.dart' as responsive_utils_test;
+import 'widgets/stat_card_test.dart' as stat_card_test;
+import 'mocks/admob_mocks_test.dart' as admob_mocks_test;
+
+// TODO: Create these test files when ready
+// import 'unit/extension_methods_test.dart' as extension_methods_test;
+// import 'widgets/banner_ad_widget_test.dart' as banner_ad_widget_test;
+// import 'widgets/bottom_navigation_test.dart' as bottom_navigation_test;
+// import 'integration/home_screen_test.dart' as home_screen_test;
+// import 'integration/ad_format_demo_screen_test.dart' as ad_format_demo_screen_test;
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  // Unit Tests
+  responsive_utils_test.main();
+  // extension_methods_test.main(); // TODO: Uncomment when file is created
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  // Widget Tests
+  // banner_ad_widget_test.main(); // TODO: Uncomment when file is created
+  // bottom_navigation_test.main(); // TODO: Uncomment when file is created
+  stat_card_test.main();
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  // Integration Tests
+  // home_screen_test.main(); // TODO: Uncomment when file is created
+  // ad_format_demo_screen_test.main(); // TODO: Uncomment when file is created
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+  // Mock Tests
+  admob_mocks_test.main();
 }
