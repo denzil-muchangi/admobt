@@ -9,6 +9,7 @@ import 'package:admobt/l10n/app_localizations.dart';
 import 'package:admobt/widgets/language_selector.dart';
 import 'package:admobt/widgets/welcome_section.dart';
 import 'package:admobt/widgets/section_header.dart';
+import 'package:admobt/utils/responsive_utils.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -44,20 +45,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final appBarTitleSize = context.responsiveFontSize(20.0);
+    final fabSize = context.responsiveValue(56.0, 64.0, 72.0);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            AppLocalizations.of(context)?.appTitle ?? 'AdMob Demo Showcase'),
+          AppLocalizations.of(context)?.appTitle ?? 'AdMob Demo Showcase',
+          style: TextStyle(fontSize: appBarTitleSize),
+        ),
         backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.white,
         actions: [
           CreativeRewardedAds.coinsDisplay(),
           const LanguageSelector(),
-          const SizedBox(width: 8),
+          SizedBox(width: context.responsiveSpacing),
         ],
       ),
       body: SingleChildScrollView(
         controller: _scrollController,
+        padding: context.responsivePadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -97,7 +104,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icons.apps),
             _buildAllFormatsDemoSection(),
 
-            const SizedBox(height: 100), // Space for bottom banner
+            SizedBox(
+                height: context.responsiveValue(
+                    80.0, 100.0, 120.0)), // Space for bottom banner
           ],
         ),
       ),
@@ -111,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
           );
         },
         backgroundColor: Colors.deepPurple,
-        child: const Icon(Icons.play_arrow),
+        child: Icon(Icons.play_arrow, size: context.responsiveIconSize(24.0)),
       ),
       bottomNavigationBar: const BannerAdWidget(
         adSize: AdSize.banner,
@@ -124,27 +133,27 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       children: [
         CreativeBannerAds.inlineContentBanner(),
-        const SizedBox(height: 16),
+        SizedBox(height: context.responsiveSpacing),
         SizedBox(
-          height: 100,
+          height: context.responsiveValue(80.0, 100.0, 120.0),
           child: ListView(
             scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: context.responsivePadding,
             children: [
               _buildBannerTypeCard('Standard', const BannerAdWidget()),
-              const SizedBox(width: 12),
+              SizedBox(width: context.responsiveSpacing),
               _buildBannerTypeCard(
                   'Large',
                   const BannerAdWidget(
                     adSize: AdSize.largeBanner,
                   )),
-              const SizedBox(width: 12),
+              SizedBox(width: context.responsiveSpacing),
               _buildBannerTypeCard(
                   'Medium',
                   const BannerAdWidget(
                     adSize: AdSize.mediumRectangle,
                   )),
-              const SizedBox(width: 12),
+              SizedBox(width: context.responsiveSpacing),
               _buildBannerTypeCard(
                   'Leaderboard',
                   const BannerAdWidget(
@@ -158,24 +167,31 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildBannerTypeCard(String title, Widget adWidget) {
+    final cardWidth = context.responsiveValue(120.0, 150.0, 180.0);
+    final titleFontSize = context.responsiveFontSize(12.0);
+    final borderRadius = context.responsiveBorderRadius;
+
     return Container(
-      width: 150,
+      width: cardWidth,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey[300]!),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(borderRadius),
       ),
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.all(4),
+            padding: context.responsivePadding * 0.5,
             decoration: BoxDecoration(
               color: Colors.grey[100],
               borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(8)),
+                  BorderRadius.vertical(top: Radius.circular(borderRadius)),
             ),
             child: Text(
               title,
-              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: titleFontSize,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Expanded(child: Center(child: adWidget)),

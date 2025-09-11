@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'ad_helper.dart';
+import '../utils/responsive_utils.dart';
 
 class BannerAdWidget extends StatefulWidget {
   final AdSize? adSize;
@@ -108,6 +109,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
         alignment: Alignment.center,
         width: _bannerAd!.size.width.toDouble(),
         height: _bannerAd!.size.height.toDouble(),
+        margin: context.responsiveMargin,
         child: AdWidget(ad: _bannerAd!),
       );
     }
@@ -115,21 +117,25 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
     if (_isLoading) {
       return Container(
         alignment: Alignment.center,
-        height: 50,
-        child: const CircularProgressIndicator(),
+        height: context.responsiveValue(40.0, 50.0, 60.0),
+        child: SizedBox(
+          width: context.responsiveIconSize(24.0),
+          height: context.responsiveIconSize(24.0),
+          child: const CircularProgressIndicator(),
+        ),
       );
     }
 
     if (_errorMessage != null) {
       return Container(
         alignment: Alignment.center,
-        height: 50,
-        padding: const EdgeInsets.all(8),
+        height: context.responsiveValue(40.0, 50.0, 60.0),
+        padding: context.responsivePadding,
         child: Text(
           'Ad unavailable',
           style: TextStyle(
             color: Colors.grey[600],
-            fontSize: 12,
+            fontSize: context.responsiveFontSize(12.0),
           ),
         ),
       );
@@ -209,28 +215,31 @@ class CreativeBannerAds {
 
   // Inline banner within content
   static Widget inlineContentBanner() {
-    return const Card(
-      elevation: 4,
-      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Sponsored Content',
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey,
-                fontWeight: FontWeight.bold,
+    return Builder(
+      builder: (context) => Card(
+        elevation: context.responsiveElevation,
+        margin: context.responsiveMargin,
+        child: Padding(
+          padding: context.responsivePadding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Sponsored Content',
+                style: TextStyle(
+                  fontSize: context.responsiveFontSize(12.0),
+                  color: Colors.grey,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            SizedBox(height: 8),
-            BannerAdWidget(
-              adSize: AdSize.mediumRectangle,
-              placement: 'inline_content',
-            ),
-          ],
+              SizedBox(height: context.responsiveSpacing),
+              BannerAdWidget(
+                adSize:
+                    context.isMobile ? AdSize.banner : AdSize.mediumRectangle,
+                placement: 'inline_content',
+              ),
+            ],
+          ),
         ),
       ),
     );

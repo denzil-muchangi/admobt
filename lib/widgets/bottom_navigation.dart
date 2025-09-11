@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/responsive_utils.dart';
 
 class BottomNavigation extends StatelessWidget {
   final int currentPage;
@@ -22,8 +23,11 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final buttonSize = context.responsiveValue(32.0, 40.0, 48.0);
+    final fontSize = context.responsiveFontSize(14.0);
+
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: context.responsivePadding,
       decoration: BoxDecoration(
         color: backgroundColor,
         boxShadow: [
@@ -40,8 +44,8 @@ class BottomNavigation extends StatelessWidget {
           return GestureDetector(
             onTap: () => onPageChanged(index),
             child: Container(
-              width: 40,
-              height: 40,
+              width: buttonSize,
+              height: buttonSize,
               decoration: BoxDecoration(
                 color: currentPage == index
                     ? selectedColor
@@ -54,6 +58,7 @@ class BottomNavigation extends StatelessWidget {
                   style: TextStyle(
                     color: currentPage == index ? Colors.white : Colors.black,
                     fontWeight: FontWeight.bold,
+                    fontSize: fontSize,
                   ),
                 ),
               ),

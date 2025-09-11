@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/responsive_utils.dart';
 
 class StatCard extends StatelessWidget {
   final String title;
@@ -14,11 +15,16 @@ class StatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final padding = context.responsivePadding;
+    final borderRadius = context.responsiveBorderRadius;
+    final titleFontSize = context.responsiveFontSize(12.0);
+    final subtitleFontSize = context.responsiveFontSize(10.0);
+
     return Container(
-      padding: const EdgeInsets.all(12),
+      padding: padding,
       decoration: BoxDecoration(
         color: color.withValues(alpha: 0.2),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(borderRadius),
         border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Column(
@@ -26,17 +32,18 @@ class StatCard extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 12,
+              fontSize: titleFontSize,
             ),
           ),
+          SizedBox(height: context.responsiveSpacing * 0.5),
           Text(
             subtitle,
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.white70,
-              fontSize: 10,
+              fontSize: subtitleFontSize,
             ),
           ),
         ],
